@@ -1,0 +1,314 @@
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp}{\section{Anomaly\+Analysis\+With\+Optical\+Flow/\+Anomaly\+Analysis\+With\+Optical\+Flow.cpp File Reference}
+\label{_anomaly_analysis_with_optical_flow_8cpp}\index{Anomaly\+Analysis\+With\+Optical\+Flow/\+Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow/\+Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Windows.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Image\+Template.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Image\+Utils.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Event\+Detection.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a512f95348c3b5ba3269d2c0750de96ca}{subtract\+Moving\+Object} (const char $\ast$video\+\_\+\+Name, const char $\ast$out\+Background, const char $\ast$out\+Foreground, int Frm\+Numfor\+Build\+B\+G=100, int default\+Min\+Area=100)
+\item 
+void \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a10e7ea3c637486cb17bea6b9dc5cffa6}{add\+Frame\+To\+Feature} (Mat \&feature, const Mat $\ast$integral\+Images, const int block\+Width, const int block\+Height, int block\+Delta\+X, int block\+Delta\+Y)
+\item 
+void \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a23f87971be879364d10ccc8d0a458161}{remove\+Frame\+From\+Feature} (Mat \&feature, const Mat $\ast$integral\+Images, const int block\+Width, const int block\+Height, int block\+Delta\+X, int block\+Delta\+Y)
+\item 
+void \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_ac4cb3a8bbc69bf2e8cd1d075fd799991}{save\+Feature} (vector$<$ Mat $>$ \&feature\+Buf, int bins)
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a33f159f930483340da499f35ee741697}{busyness\+And\+Detection\+Common} (const char $\ast$foreground\+Video, const char $\ast$origin\+Video, const int \&win\+\_\+size, const bool b\+Comp\+Busyness, Mat \&busyness, Video\+Writer \&writer, const char $\ast$out\+Flow\+Video, const int \&of\+\_\+time\+\_\+interval, const int \&of\+\_\+space\+\_\+interval, int bins, int block\+Width, int block\+Height, int block\+Delta\+X, int block\+Delta\+Y, float thresh)
+\item 
+Mat \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_abe72ff758115726e6408f29a5875074a}{compute\+Busyness} (const char $\ast$foreground\+Video, const char $\ast$origin\+Video, const int \&win\+\_\+size, const char $\ast$out\+Flow\+Video, const int \&of\+\_\+time\+\_\+interval, const int \&of\+\_\+space\+\_\+interval, int bins, int block\+Width, int block\+Height, int block\+Delta\+X, int block\+Delta\+Y)
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a8e1cc042ec60f01ce49d40e2f8b3c176}{detect\+Abnomal} (Mat busyness, const char $\ast$foreground\+Video, const char $\ast$origin\+Video, const char $\ast$out\+Video, const int win\+\_\+size, const char $\ast$out\+Flow\+Video, const int \&of\+\_\+time\+\_\+interval, int bins, const int \&of\+\_\+space\+\_\+interval, int block\+Width, int block\+Height, int block\+Delta\+X, int block\+Delta\+Y, float thresh)
+\item 
+int \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a96662078433e3701cdc4bd2ea4c967ee}{\+\_\+tmain} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_ae3774e5e542f7ed63bdb91e379beebf3}{feature\+\_\+folder} \mbox{[}255\mbox{]} = \char`\"{}train\+\_\+features\char`\"{}
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a70a0df424eea6d6997c27a3cdd2bda3a}{b\+Save\+Features} = false
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_addb4cad33498a89a3a799c6eb5b5181a}{b\+Perform\+Detection} = true
+\item 
+bool \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a5e135f1478ed1ffb7e22a91abbaf46ab}{b\+Save\+Background} = false
+\item 
+clock\+\_\+t \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a4ab5ca319a6ce94ab2b4fbe59d327f5c}{start\+Time}
+\item 
+clock\+\_\+t \hyperlink{_anomaly_analysis_with_optical_flow_8cpp_a9d10e4ab403e488d4759c58394624ef2}{end\+Time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a96662078433e3701cdc4bd2ea4c967ee}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!\+\_\+tmain@{\+\_\+tmain}}
+\index{\+\_\+tmain@{\+\_\+tmain}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{\+\_\+tmain}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+tmain (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a96662078433e3701cdc4bd2ea4c967ee}
+主函数 
+\begin{DoxyParams}{Parameters}
+{\em argc} & 参数个数 \\
+\hline
+{\em argv} & 参数 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+返回值 
+\end{DoxyReturn}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a10e7ea3c637486cb17bea6b9dc5cffa6}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!add\+Frame\+To\+Feature@{add\+Frame\+To\+Feature}}
+\index{add\+Frame\+To\+Feature@{add\+Frame\+To\+Feature}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{add\+Frame\+To\+Feature}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Frame\+To\+Feature (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{feature, }
+\item[{const Mat $\ast$}]{integral\+Images, }
+\item[{const int}]{block\+Width, }
+\item[{const int}]{block\+Height, }
+\item[{int}]{block\+Delta\+X, }
+\item[{int}]{block\+Delta\+Y}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a10e7ea3c637486cb17bea6b9dc5cffa6}
+增加一帧属性到特征 
+\begin{DoxyParams}{Parameters}
+{\em feature} & 输出的六维特征矩阵 \\
+\hline
+{\em integral\+Images} & 光流积分图像组 \\
+\hline
+{\em block\+Width} & 统计特征分块的宽度 \\
+\hline
+{\em block\+Height} & 统计特征分块的高度 \\
+\hline
+{\em block\+Delta\+X} & 统计特征分块的宽度间隔 \\
+\hline
+{\em block\+Delta\+Y} & 统计特征分块的高度间隔 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a33f159f930483340da499f35ee741697}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!busyness\+And\+Detection\+Common@{busyness\+And\+Detection\+Common}}
+\index{busyness\+And\+Detection\+Common@{busyness\+And\+Detection\+Common}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{busyness\+And\+Detection\+Common}]{\setlength{\rightskip}{0pt plus 5cm}bool busyness\+And\+Detection\+Common (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{foreground\+Video, }
+\item[{const char $\ast$}]{origin\+Video, }
+\item[{const int \&}]{win\+\_\+size, }
+\item[{const bool}]{b\+Comp\+Busyness, }
+\item[{Mat \&}]{busyness, }
+\item[{Video\+Writer \&}]{writer, }
+\item[{const char $\ast$}]{out\+Flow\+Video, }
+\item[{const int \&}]{of\+\_\+time\+\_\+interval, }
+\item[{const int \&}]{of\+\_\+space\+\_\+interval, }
+\item[{int}]{bins, }
+\item[{int}]{block\+Width, }
+\item[{int}]{block\+Height, }
+\item[{int}]{block\+Delta\+X, }
+\item[{int}]{block\+Delta\+Y, }
+\item[{float}]{thresh}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a33f159f930483340da499f35ee741697}
+计算 busyness 图像或者进行异常检测 ($>$= opencv 2.\+0) 
+\begin{DoxyParams}{Parameters}
+{\em foreground\+Video} & -\/ 输入的前景视频 \\
+\hline
+{\em origin\+Video} & -\/ 输入的原始视频 \\
+\hline
+{\em win\+\_\+size} & 时间窗口大小 \\
+\hline
+{\em b\+Comp\+Busyness} & 是否是计算busyness \\
+\hline
+{\em busyness} & 如果是计算busyness，则返回此值；否则利用此值进行异常检测 \\
+\hline
+{\em writer} & 如果进行异常检测，输出结果到 writer \\
+\hline
+{\em of\+\_\+time\+\_\+interval} & 光流的时间采样间隔 \\
+\hline
+{\em of\+\_\+space\+\_\+interval} & 光流的空间采样间隔 \\
+\hline
+{\em bins} & 桶的个数 \\
+\hline
+{\em block\+Width} & 统计特征分块的宽度 \\
+\hline
+{\em block\+Height} & 统计特征分块的高度 \\
+\hline
+{\em block\+Delta\+X} & 统计特征分块的宽度间隔 \\
+\hline
+{\em block\+Delta\+Y} & 统计特征分块的高度间隔 \\
+\hline
+{\em thresh} & 判别是否异常的阈值参数，在\mbox{[}0, 1\mbox{]}之间，典型值为 0.\+032 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+是否成功 
+\end{DoxyReturn}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_abe72ff758115726e6408f29a5875074a}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!compute\+Busyness@{compute\+Busyness}}
+\index{compute\+Busyness@{compute\+Busyness}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{compute\+Busyness}]{\setlength{\rightskip}{0pt plus 5cm}Mat compute\+Busyness (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{foreground\+Video, }
+\item[{const char $\ast$}]{origin\+Video, }
+\item[{const int \&}]{win\+\_\+size, }
+\item[{const char $\ast$}]{out\+Flow\+Video, }
+\item[{const int \&}]{of\+\_\+time\+\_\+interval, }
+\item[{const int \&}]{of\+\_\+space\+\_\+interval, }
+\item[{int}]{bins, }
+\item[{int}]{block\+Width, }
+\item[{int}]{block\+Height, }
+\item[{int}]{block\+Delta\+X, }
+\item[{int}]{block\+Delta\+Y}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_abe72ff758115726e6408f29a5875074a}
+计算 busyness 图像 ($>$= opencv 2.\+0) 
+\begin{DoxyParams}{Parameters}
+{\em foreground\+Video} & -\/ 输入的前景视频 \\
+\hline
+{\em origin\+Video} & -\/ 输入的原始视频 \\
+\hline
+{\em win\+\_\+size} & -\/ 时间窗口大小 \\
+\hline
+{\em of\+\_\+time\+\_\+interval} & -\/ 光流的时间采样间隔 \\
+\hline
+{\em of\+\_\+space\+\_\+interval} & -\/ 光流的空间采样间隔 \\
+\hline
+{\em block\+Delta\+X} & 统计特征分块的宽度间隔 \\
+\hline
+{\em block\+Delta\+Y} & 统计特征分块的高度间隔 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Mat -\/ busyness 图像(6 通道)：x方向, y方向速度最大值、最小值， 不动 （flowmag $<$ 2$\ast$2）, 最大速度范数 max(flowmag) 
+\end{DoxyReturn}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a8e1cc042ec60f01ce49d40e2f8b3c176}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!detect\+Abnomal@{detect\+Abnomal}}
+\index{detect\+Abnomal@{detect\+Abnomal}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{detect\+Abnomal}]{\setlength{\rightskip}{0pt plus 5cm}bool detect\+Abnomal (
+\begin{DoxyParamCaption}
+\item[{Mat}]{busyness, }
+\item[{const char $\ast$}]{foreground\+Video, }
+\item[{const char $\ast$}]{origin\+Video, }
+\item[{const char $\ast$}]{out\+Video, }
+\item[{const int}]{win\+\_\+size, }
+\item[{const char $\ast$}]{out\+Flow\+Video, }
+\item[{const int \&}]{of\+\_\+time\+\_\+interval, }
+\item[{int}]{bins, }
+\item[{const int \&}]{of\+\_\+space\+\_\+interval, }
+\item[{int}]{block\+Width, }
+\item[{int}]{block\+Height, }
+\item[{int}]{block\+Delta\+X, }
+\item[{int}]{block\+Delta\+Y, }
+\item[{float}]{thresh}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a8e1cc042ec60f01ce49d40e2f8b3c176}
+检测输入的前景视频中的异常事件 
+\begin{DoxyParams}{Parameters}
+{\em foreground\+Video} & -\/ 输入的前景视频 \\
+\hline
+{\em origin\+Video} & -\/ 输入的原始视频 \\
+\hline
+{\em out\+Video} & -\/ 输出的异常检测视频 \\
+\hline
+{\em win\+\_\+size} & -\/ 时间窗口大小 \\
+\hline
+{\em of\+\_\+time\+\_\+interval} & -\/ 光流的时间采样间隔 \\
+\hline
+{\em of\+\_\+space\+\_\+interval} & -\/ 光流的空间采样间隔 \\
+\hline
+{\em block\+Delta\+X} & 统计特征分块的宽度间隔 \\
+\hline
+{\em block\+Delta\+Y} & 统计特征分块的高度间隔 \\
+\hline
+{\em thresh} & 判别是否异常的阈值参数，在\mbox{[}0, 1\mbox{]}之间，典型值为 0.\+02 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+是否成功 
+\end{DoxyReturn}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a23f87971be879364d10ccc8d0a458161}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!remove\+Frame\+From\+Feature@{remove\+Frame\+From\+Feature}}
+\index{remove\+Frame\+From\+Feature@{remove\+Frame\+From\+Feature}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{remove\+Frame\+From\+Feature}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+Frame\+From\+Feature (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{feature, }
+\item[{const Mat $\ast$}]{integral\+Images, }
+\item[{const int}]{block\+Width, }
+\item[{const int}]{block\+Height, }
+\item[{int}]{block\+Delta\+X, }
+\item[{int}]{block\+Delta\+Y}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a23f87971be879364d10ccc8d0a458161}
+从特征矩阵中减掉 
+\begin{DoxyParams}{Parameters}
+{\em feature} & 输出的六维特征矩阵 \\
+\hline
+{\em integral\+Images} & 光流积分图像组 \\
+\hline
+{\em block\+Width} & 统计特征分块的宽度 \\
+\hline
+{\em block\+Height} & 统计特征分块的高度 \\
+\hline
+{\em block\+Delta\+X} & 统计特征分块的宽度间隔 \\
+\hline
+{\em block\+Delta\+Y} & 统计特征分块的高度间隔 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_ac4cb3a8bbc69bf2e8cd1d075fd799991}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!save\+Feature@{save\+Feature}}
+\index{save\+Feature@{save\+Feature}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{save\+Feature}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Feature (
+\begin{DoxyParamCaption}
+\item[{vector$<$ Mat $>$ \&}]{feature\+Buf, }
+\item[{int}]{bins}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_ac4cb3a8bbc69bf2e8cd1d075fd799991}
+保存特征到文件 
+\begin{DoxyParams}{Parameters}
+{\em feature\+Buf} & 缓存特征的vector \\
+\hline
+{\em bins} & 光流特征维数，还有一维静止特征，故实际特征是 bins + 1 维 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a512f95348c3b5ba3269d2c0750de96ca}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!subtract\+Moving\+Object@{subtract\+Moving\+Object}}
+\index{subtract\+Moving\+Object@{subtract\+Moving\+Object}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{subtract\+Moving\+Object}]{\setlength{\rightskip}{0pt plus 5cm}bool subtract\+Moving\+Object (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{video\+\_\+\+Name, }
+\item[{const char $\ast$}]{out\+Background, }
+\item[{const char $\ast$}]{out\+Foreground, }
+\item[{int}]{Frm\+Numfor\+Build\+B\+G = {\ttfamily 100}, }
+\item[{int}]{default\+Min\+Area = {\ttfamily 100}}
+\end{DoxyParamCaption}
+)}}\label{_anomaly_analysis_with_optical_flow_8cpp_a512f95348c3b5ba3269d2c0750de96ca}
+提取视频中的运动目标并保存到文件 ($>$= opencv 1.\+0) 
+\begin{DoxyParams}{Parameters}
+{\em Video\+\_\+\+Name} & -\/ 输入视频路径 \\
+\hline
+{\em out\+Background} & -\/ 输出视频路径 \\
+\hline
+{\em Frm\+Numfor\+Build\+B\+G} & -\/ 建立背景模型所需的帧数， 默认 100 \\
+\hline
+{\em default\+Min\+Area} & -\/ 过滤最小面积的阈值，默认100 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean value -\/ 是否成功 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_addb4cad33498a89a3a799c6eb5b5181a}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!b\+Perform\+Detection@{b\+Perform\+Detection}}
+\index{b\+Perform\+Detection@{b\+Perform\+Detection}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{b\+Perform\+Detection}]{\setlength{\rightskip}{0pt plus 5cm}bool b\+Perform\+Detection = true}}\label{_anomaly_analysis_with_optical_flow_8cpp_addb4cad33498a89a3a799c6eb5b5181a}
+控制是否执行检测的开关，如果不执行，输出的res\+Video是全黑的；将由\+Matlab的光流来完成detection \hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a5e135f1478ed1ffb7e22a91abbaf46ab}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!b\+Save\+Background@{b\+Save\+Background}}
+\index{b\+Save\+Background@{b\+Save\+Background}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{b\+Save\+Background}]{\setlength{\rightskip}{0pt plus 5cm}bool b\+Save\+Background = false}}\label{_anomaly_analysis_with_optical_flow_8cpp_a5e135f1478ed1ffb7e22a91abbaf46ab}
+控制是否保存内容的开关 \hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a70a0df424eea6d6997c27a3cdd2bda3a}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!b\+Save\+Features@{b\+Save\+Features}}
+\index{b\+Save\+Features@{b\+Save\+Features}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{b\+Save\+Features}]{\setlength{\rightskip}{0pt plus 5cm}bool b\+Save\+Features = false}}\label{_anomaly_analysis_with_optical_flow_8cpp_a70a0df424eea6d6997c27a3cdd2bda3a}
+控制是否保存特征的开关 \hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a9d10e4ab403e488d4759c58394624ef2}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!end\+Time@{end\+Time}}
+\index{end\+Time@{end\+Time}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{end\+Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\+\_\+t end\+Time}}\label{_anomaly_analysis_with_optical_flow_8cpp_a9d10e4ab403e488d4759c58394624ef2}
+\hypertarget{_anomaly_analysis_with_optical_flow_8cpp_ae3774e5e542f7ed63bdb91e379beebf3}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!feature\+\_\+folder@{feature\+\_\+folder}}
+\index{feature\+\_\+folder@{feature\+\_\+folder}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{feature\+\_\+folder}]{\setlength{\rightskip}{0pt plus 5cm}char feature\+\_\+folder\mbox{[}255\mbox{]} = \char`\"{}train\+\_\+features\char`\"{}}}\label{_anomaly_analysis_with_optical_flow_8cpp_ae3774e5e542f7ed63bdb91e379beebf3}
+保存特征文件夹 \hypertarget{_anomaly_analysis_with_optical_flow_8cpp_a4ab5ca319a6ce94ab2b4fbe59d327f5c}{\index{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}!start\+Time@{start\+Time}}
+\index{start\+Time@{start\+Time}!Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp@{Anomaly\+Analysis\+With\+Optical\+Flow.\+cpp}}
+\subsubsection[{start\+Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\+\_\+t start\+Time}}\label{_anomaly_analysis_with_optical_flow_8cpp_a4ab5ca319a6ce94ab2b4fbe59d327f5c}

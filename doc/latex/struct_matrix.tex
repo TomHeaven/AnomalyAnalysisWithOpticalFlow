@@ -1,0 +1,204 @@
+\hypertarget{struct_matrix}{\section{Matrix Struct Reference}
+\label{struct_matrix}\index{Matrix@{Matrix}}
+}
+
+
+{\ttfamily \#include $<$Matrix.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_matrix_a2dba13c45127354c9f75ef576f49269b}{Matrix} ()
+\item 
+\hyperlink{struct_matrix_ae940d9b978841f5f497b7b7f81c63d23}{Matrix} (int w, int h)
+\item 
+\hyperlink{struct_matrix_a9b1c3627f573d78a2f08623fdfef990f}{$\sim$\+Matrix} ()
+\item 
+void \hyperlink{struct_matrix_ab59f4a769478018f0b27663e58212ae0}{release} ()
+\item 
+\hyperlink{struct_matrix_a765f4dcb51b6829311cc3e7576388423}{Matrix} (const \hyperlink{struct_matrix}{Matrix} \&m)
+\item 
+void \hyperlink{struct_matrix_aa1967ad240a5ffaf492800044b7275d9}{print\+Matrix} ()
+\item 
+bool \hyperlink{struct_matrix_a81b93f9fb33df8c1158e04f126cd027b}{save\+Matrix} (const char $\ast$filepath)
+\item 
+bool \hyperlink{struct_matrix_a6081c47c292a9f7b2ad9b52d19448a6a}{load\+Matrix} (const char $\ast$filepath)
+\item 
+void \hyperlink{struct_matrix_af143c4fe4c0c4898042445ff7a1c3e7e}{add} (const \hyperlink{struct_matrix}{Matrix} \&m)
+\item 
+void \hyperlink{struct_matrix_a86dbacb2dbce0a0f060d42e42803b036}{subtract} (const \hyperlink{struct_matrix}{Matrix} \&m)
+\item 
+int \hyperlink{struct_matrix_a039ea2d4f46386c0935b5deb8002f3a4}{max} ()
+\item 
+void \hyperlink{struct_matrix_a84fcf597f06e429f37afc6fe20be7f3b}{max} (const \hyperlink{struct_matrix}{Matrix} \&m)
+\item 
+void \hyperlink{struct_matrix_a00ff4e77d40160c2d3c1f7082abff2c6}{normalize} ()
+\item 
+Ipl\+Image $\ast$ \hyperlink{struct_matrix_ac2889fe790b53254c2c161cdfa850ab9}{to\+Ipl\+Image} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$$\ast$ \hyperlink{struct_matrix_afda04dbb307a169b4235dba98fb5b9df}{data}
+\item 
+int \hyperlink{struct_matrix_ad4320bd2dc03fd11887d3ba350c6c8ef}{width}
+\item 
+int \hyperlink{struct_matrix_a0b5614256a04ece0ea54b8aad7e6980c}{height}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+定义结构 \hyperlink{struct_matrix}{Matrix} 用于计算 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_matrix_a2dba13c45127354c9f75ef576f49269b}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\+::\+Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a2dba13c45127354c9f75ef576f49269b}
+构造函数 \hypertarget{struct_matrix_ae940d9b978841f5f497b7b7f81c63d23}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\+::\+Matrix (
+\begin{DoxyParamCaption}
+\item[{int}]{w, }
+\item[{int}]{h}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_ae940d9b978841f5f497b7b7f81c63d23}
+构造函数1 \hypertarget{struct_matrix_a9b1c3627f573d78a2f08623fdfef990f}{\index{Matrix@{Matrix}!````~Matrix@{$\sim$\+Matrix}}
+\index{````~Matrix@{$\sim$\+Matrix}!Matrix@{Matrix}}
+\subsubsection[{$\sim$\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\+::$\sim$\+Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a9b1c3627f573d78a2f08623fdfef990f}
+析构函数 \hypertarget{struct_matrix_a765f4dcb51b6829311cc3e7576388423}{\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Matrix\+::\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a765f4dcb51b6829311cc3e7576388423}
+构造函数2 
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_matrix_af143c4fe4c0c4898042445ff7a1c3e7e}{\index{Matrix@{Matrix}!add@{add}}
+\index{add@{add}!Matrix@{Matrix}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_af143c4fe4c0c4898042445ff7a1c3e7e}
+求两个同形矩阵对应元素之和，并赋值到自身 
+\begin{DoxyParams}{Parameters}
+{\em m} & 运算符的第二个矩阵 \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_matrix_a6081c47c292a9f7b2ad9b52d19448a6a}{\index{Matrix@{Matrix}!load\+Matrix@{load\+Matrix}}
+\index{load\+Matrix@{load\+Matrix}!Matrix@{Matrix}}
+\subsubsection[{load\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool Matrix\+::load\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filepath}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a6081c47c292a9f7b2ad9b52d19448a6a}
+从文件加载矩阵 
+\begin{DoxyParams}{Parameters}
+{\em filepath} & 加载的文件路径 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+一个bool值，表示是否成功。 
+\end{DoxyReturn}
+\hypertarget{struct_matrix_a039ea2d4f46386c0935b5deb8002f3a4}{\index{Matrix@{Matrix}!max@{max}}
+\index{max@{max}!Matrix@{Matrix}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\+::max (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a039ea2d4f46386c0935b5deb8002f3a4}
+求所有元素最大值 \begin{DoxyReturn}{Returns}
+最大值 int 
+\end{DoxyReturn}
+\hypertarget{struct_matrix_a84fcf597f06e429f37afc6fe20be7f3b}{\index{Matrix@{Matrix}!max@{max}}
+\index{max@{max}!Matrix@{Matrix}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::max (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a84fcf597f06e429f37afc6fe20be7f3b}
+求两个同形矩阵对应元素最大值，并赋值到自身 \hypertarget{struct_matrix_a00ff4e77d40160c2d3c1f7082abff2c6}{\index{Matrix@{Matrix}!normalize@{normalize}}
+\index{normalize@{normalize}!Matrix@{Matrix}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::normalize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a00ff4e77d40160c2d3c1f7082abff2c6}
+归一化矩阵值域到 \mbox{[}0, 255\mbox{]} \hypertarget{struct_matrix_aa1967ad240a5ffaf492800044b7275d9}{\index{Matrix@{Matrix}!print\+Matrix@{print\+Matrix}}
+\index{print\+Matrix@{print\+Matrix}!Matrix@{Matrix}}
+\subsubsection[{print\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::print\+Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_aa1967ad240a5ffaf492800044b7275d9}
+打印 \hypertarget{struct_matrix_ab59f4a769478018f0b27663e58212ae0}{\index{Matrix@{Matrix}!release@{release}}
+\index{release@{release}!Matrix@{Matrix}}
+\subsubsection[{release}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_ab59f4a769478018f0b27663e58212ae0}
+释放内存 \hypertarget{struct_matrix_a81b93f9fb33df8c1158e04f126cd027b}{\index{Matrix@{Matrix}!save\+Matrix@{save\+Matrix}}
+\index{save\+Matrix@{save\+Matrix}!Matrix@{Matrix}}
+\subsubsection[{save\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool Matrix\+::save\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filepath}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a81b93f9fb33df8c1158e04f126cd027b}
+保存矩阵到文件 
+\begin{DoxyParams}{Parameters}
+{\em filepath} & 保存的文件路径 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+一个bool值，表示是否成功。 
+\end{DoxyReturn}
+\hypertarget{struct_matrix_a86dbacb2dbce0a0f060d42e42803b036}{\index{Matrix@{Matrix}!subtract@{subtract}}
+\index{subtract@{subtract}!Matrix@{Matrix}}
+\subsubsection[{subtract}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix\+::subtract (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_a86dbacb2dbce0a0f060d42e42803b036}
+求两个同形矩阵对应元素之差，并赋值到自身 
+\begin{DoxyParams}{Parameters}
+{\em m} & 运算符的第二个矩阵 \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_matrix_ac2889fe790b53254c2c161cdfa850ab9}{\index{Matrix@{Matrix}!to\+Ipl\+Image@{to\+Ipl\+Image}}
+\index{to\+Ipl\+Image@{to\+Ipl\+Image}!Matrix@{Matrix}}
+\subsubsection[{to\+Ipl\+Image}]{\setlength{\rightskip}{0pt plus 5cm}Ipl\+Image$\ast$ Matrix\+::to\+Ipl\+Image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_matrix_ac2889fe790b53254c2c161cdfa850ab9}
+转化为 Ipl\+Image 图像，注意用完之后要 cv\+Rlease\+Image(\+Ilp\+Image$\ast$$\ast$)，否则会造成内存泄漏。 \begin{DoxyReturn}{Returns}
+单通道\+Ipl\+Image$\ast$ 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_matrix_afda04dbb307a169b4235dba98fb5b9df}{\index{Matrix@{Matrix}!data@{data}}
+\index{data@{data}!Matrix@{Matrix}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ Matrix\+::data}}\label{struct_matrix_afda04dbb307a169b4235dba98fb5b9df}
+\hypertarget{struct_matrix_a0b5614256a04ece0ea54b8aad7e6980c}{\index{Matrix@{Matrix}!height@{height}}
+\index{height@{height}!Matrix@{Matrix}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\+::height}}\label{struct_matrix_a0b5614256a04ece0ea54b8aad7e6980c}
+\hypertarget{struct_matrix_ad4320bd2dc03fd11887d3ba350c6c8ef}{\index{Matrix@{Matrix}!width@{width}}
+\index{width@{width}!Matrix@{Matrix}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}int Matrix\+::width}}\label{struct_matrix_ad4320bd2dc03fd11887d3ba350c6c8ef}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Anomaly\+Analysis\+With\+Optical\+Flow/\hyperlink{_matrix_8h}{Matrix.\+h}\end{DoxyCompactItemize}

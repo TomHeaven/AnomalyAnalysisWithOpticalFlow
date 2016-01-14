@@ -1,0 +1,194 @@
+\hypertarget{_image_utils_8h}{\section{Anomaly\+Analysis\+With\+Optical\+Flow/\+Image\+Utils.h File Reference}
+\label{_image_utils_8h}\index{Anomaly\+Analysis\+With\+Optical\+Flow/\+Image\+Utils.\+h@{Anomaly\+Analysis\+With\+Optical\+Flow/\+Image\+Utils.\+h}}
+}
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\\*
+{\ttfamily \#include $<$cstdio$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_image_utils_8h_af08ec37a8c99d747fb60fa15bc28678b}{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef Vec$<$ float, 10 $>$ \hyperlink{_image_utils_8h_af959b495040b090d1fd43daa85919f79}{Vec7f}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2}{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E} \{ \hyperlink{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2aee076e1745d05103dde5d1986edd21ce}{O\+N\+E\+\_\+\+C\+O\+L}, 
+\hyperlink{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2a263ce870938295d31cf3ece149848523}{T\+W\+O\+\_\+\+C\+O\+L}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uchar \hyperlink{_image_utils_8h_ae6f835316e0e5ed02bf8ba1cf473aff5}{get\+Pixel} (Ipl\+Image $\ast$img, int x, int y)
+\item 
+void \hyperlink{_image_utils_8h_a676d564f42a6bdda2bdd70a226d75c6c}{set\+Pixel} (Ipl\+Image $\ast$img, int x, int y, uchar val)
+\item 
+bool \hyperlink{_image_utils_8h_af7a76ee6f10b94407e9558b560b9f7e5}{save\+Image\+As\+Text} (const Mat \&img, const char $\ast$text\+File)
+\item 
+Mat \hyperlink{_image_utils_8h_aa45f6af0936c9e7249204a37a0b5bbff}{load\+Image\+From\+Text} (const char $\ast$text\+File)
+\item 
+void \hyperlink{_image_utils_8h_a6b1f1125fdf920debab863e71028e8bc}{Draw\+Rect} (Ipl\+Image $\ast$img, Cv\+Rect rect, Cv\+Scalar color)
+\item 
+void \hyperlink{_image_utils_8h_a8f796fbf493ab0f42ee09cdfff20ab0b}{Binary\+O\+R\+Binary\+Image} (Mat \&srcbianry\+Image1, Mat \&srcbianry\+Image2, Mat \&dstbianry\+Image)
+\item 
+void \hyperlink{_image_utils_8h_a9a3766445b6d99561b8553d9f78a1591}{Binary\+O\+R\+Binary\+Image} (Ipl\+Image $\ast$srcbianry\+Image1, Ipl\+Image $\ast$srcbianry\+Image2, Ipl\+Image $\ast$dstbianry\+Image)
+\item 
+void \hyperlink{_image_utils_8h_a3ecbc7a912b6581ec6894eaabf5d32a0}{Remove\+Small\+Erea} (const Mat \&src\+Bianry\+Image, Mat \&dst, double Min\+Area)
+\item 
+void \hyperlink{_image_utils_8h_a35dcea6decff3a5351c20fffa721db45}{Remove\+Small\+Area} (Ipl\+Image $\ast$srcbinary\+Image, double Min\+Area)
+\item 
+bool \hyperlink{_image_utils_8h_a6dd8a16d7eb2f58fd8b14004928ad735}{combine\+Video\+Files} (const char $\ast$input\+File1, const char $\ast$input\+File2, const char $\ast$out\+File, const int delay, const \hyperlink{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2}{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E} style=\hyperlink{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2a263ce870938295d31cf3ece149848523}{T\+W\+O\+\_\+\+C\+O\+L})
+\item 
+void \hyperlink{_image_utils_8h_a678a517badf13cbf02c017e9404926f5}{my\+Running\+Avg} (const Mat \&src\+Mat, Mat \&dst\+Mat, const Mat \&mask\+Frame, float alpha)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_image_utils_8h_af08ec37a8c99d747fb60fa15bc28678b}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S@{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S}}
+\index{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S@{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+G\+S}}\label{_image_utils_8h_af08ec37a8c99d747fb60fa15bc28678b}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{_image_utils_8h_af959b495040b090d1fd43daa85919f79}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Vec7f@{Vec7f}}
+\index{Vec7f@{Vec7f}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Vec7f}]{\setlength{\rightskip}{0pt plus 5cm}typedef Vec$<$float, 10$>$ {\bf Vec7f}}}\label{_image_utils_8h_af959b495040b090d1fd43daa85919f79}
+注意：修改bins必须修改此处! 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E@{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E}}
+\index{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E@{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E}}}\label{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{O\+N\+E\+\_\+\+C\+O\+L@{O\+N\+E\+\_\+\+C\+O\+L}!Image\+Utils.\+h@{Image\+Utils.\+h}}\index{Image\+Utils.\+h@{Image\+Utils.\+h}!O\+N\+E\+\_\+\+C\+O\+L@{O\+N\+E\+\_\+\+C\+O\+L}}\item[{\em 
+\hypertarget{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2aee076e1745d05103dde5d1986edd21ce}{O\+N\+E\+\_\+\+C\+O\+L}\label{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2aee076e1745d05103dde5d1986edd21ce}
+}]\index{T\+W\+O\+\_\+\+C\+O\+L@{T\+W\+O\+\_\+\+C\+O\+L}!Image\+Utils.\+h@{Image\+Utils.\+h}}\index{Image\+Utils.\+h@{Image\+Utils.\+h}!T\+W\+O\+\_\+\+C\+O\+L@{T\+W\+O\+\_\+\+C\+O\+L}}\item[{\em 
+\hypertarget{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2a263ce870938295d31cf3ece149848523}{T\+W\+O\+\_\+\+C\+O\+L}\label{_image_utils_8h_ad2329f45881b337ae8d1052ff8591dd2a263ce870938295d31cf3ece149848523}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{_image_utils_8h_a8f796fbf493ab0f42ee09cdfff20ab0b}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Binary\+O\+R\+Binary\+Image@{Binary\+O\+R\+Binary\+Image}}
+\index{Binary\+O\+R\+Binary\+Image@{Binary\+O\+R\+Binary\+Image}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Binary\+O\+R\+Binary\+Image}]{\setlength{\rightskip}{0pt plus 5cm}void Binary\+O\+R\+Binary\+Image (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{srcbianry\+Image1, }
+\item[{Mat \&}]{srcbianry\+Image2, }
+\item[{Mat \&}]{dstbianry\+Image}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a8f796fbf493ab0f42ee09cdfff20ab0b}
+二进制图像与操作 \hypertarget{_image_utils_8h_a9a3766445b6d99561b8553d9f78a1591}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Binary\+O\+R\+Binary\+Image@{Binary\+O\+R\+Binary\+Image}}
+\index{Binary\+O\+R\+Binary\+Image@{Binary\+O\+R\+Binary\+Image}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Binary\+O\+R\+Binary\+Image}]{\setlength{\rightskip}{0pt plus 5cm}void Binary\+O\+R\+Binary\+Image (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{srcbianry\+Image1, }
+\item[{Ipl\+Image $\ast$}]{srcbianry\+Image2, }
+\item[{Ipl\+Image $\ast$}]{dstbianry\+Image}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a9a3766445b6d99561b8553d9f78a1591}
+\hypertarget{_image_utils_8h_a6dd8a16d7eb2f58fd8b14004928ad735}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!combine\+Video\+Files@{combine\+Video\+Files}}
+\index{combine\+Video\+Files@{combine\+Video\+Files}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{combine\+Video\+Files}]{\setlength{\rightskip}{0pt plus 5cm}bool combine\+Video\+Files (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{input\+File1, }
+\item[{const char $\ast$}]{input\+File2, }
+\item[{const char $\ast$}]{out\+File, }
+\item[{const int}]{delay, }
+\item[{const {\bf C\+O\+M\+B\+I\+N\+E\+\_\+\+S\+T\+Y\+L\+E}}]{style = {\ttfamily {\bf T\+W\+O\+\_\+\+C\+O\+L}}}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a6dd8a16d7eb2f58fd8b14004928ad735}
+将两个视频并排合并 
+\begin{DoxyParams}{Parameters}
+{\em input\+File1} & 输入视频1 \\
+\hline
+{\em input\+File2} & 输入视频2 \\
+\hline
+{\em out\+File} & 输出视频路径 \\
+\hline
+{\em delay} & 视频2比视频1的延迟帧数 \\
+\hline
+{\em style} & 合并方式 O\+N\+E\+\_\+\+C\+O\+L或者 T\+W\+O\+\_\+\+C\+O\+L \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+是否成功 
+\end{DoxyReturn}
+\hypertarget{_image_utils_8h_a6b1f1125fdf920debab863e71028e8bc}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Draw\+Rect@{Draw\+Rect}}
+\index{Draw\+Rect@{Draw\+Rect}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Draw\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}void Draw\+Rect (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{img, }
+\item[{Cv\+Rect}]{rect, }
+\item[{Cv\+Scalar}]{color}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a6b1f1125fdf920debab863e71028e8bc}
+在图像中画一个矩形区域 \hypertarget{_image_utils_8h_ae6f835316e0e5ed02bf8ba1cf473aff5}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!get\+Pixel@{get\+Pixel}}
+\index{get\+Pixel@{get\+Pixel}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{get\+Pixel}]{\setlength{\rightskip}{0pt plus 5cm}uchar get\+Pixel (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{img, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_ae6f835316e0e5ed02bf8ba1cf473aff5}
+获取一个单通道图像的像素 w, h \hypertarget{_image_utils_8h_aa45f6af0936c9e7249204a37a0b5bbff}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!load\+Image\+From\+Text@{load\+Image\+From\+Text}}
+\index{load\+Image\+From\+Text@{load\+Image\+From\+Text}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{load\+Image\+From\+Text}]{\setlength{\rightskip}{0pt plus 5cm}Mat load\+Image\+From\+Text (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{text\+File}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_aa45f6af0936c9e7249204a37a0b5bbff}
+从文本文件读取图像 \hypertarget{_image_utils_8h_a678a517badf13cbf02c017e9404926f5}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!my\+Running\+Avg@{my\+Running\+Avg}}
+\index{my\+Running\+Avg@{my\+Running\+Avg}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{my\+Running\+Avg}]{\setlength{\rightskip}{0pt plus 5cm}void my\+Running\+Avg (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src\+Mat, }
+\item[{Mat \&}]{dst\+Mat, }
+\item[{const Mat \&}]{mask\+Frame, }
+\item[{float}]{alpha}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a678a517badf13cbf02c017e9404926f5}
+并行优化的 running\+Avg \hypertarget{_image_utils_8h_a35dcea6decff3a5351c20fffa721db45}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Remove\+Small\+Area@{Remove\+Small\+Area}}
+\index{Remove\+Small\+Area@{Remove\+Small\+Area}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Remove\+Small\+Area}]{\setlength{\rightskip}{0pt plus 5cm}void Remove\+Small\+Area (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{srcbinary\+Image, }
+\item[{double}]{Min\+Area}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a35dcea6decff3a5351c20fffa721db45}
+\hypertarget{_image_utils_8h_a3ecbc7a912b6581ec6894eaabf5d32a0}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!Remove\+Small\+Erea@{Remove\+Small\+Erea}}
+\index{Remove\+Small\+Erea@{Remove\+Small\+Erea}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{Remove\+Small\+Erea}]{\setlength{\rightskip}{0pt plus 5cm}void Remove\+Small\+Erea (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src\+Bianry\+Image, }
+\item[{Mat \&}]{dst, }
+\item[{double}]{Min\+Area}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a3ecbc7a912b6581ec6894eaabf5d32a0}
+删除面积小于阈值的块 \hypertarget{_image_utils_8h_af7a76ee6f10b94407e9558b560b9f7e5}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!save\+Image\+As\+Text@{save\+Image\+As\+Text}}
+\index{save\+Image\+As\+Text@{save\+Image\+As\+Text}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{save\+Image\+As\+Text}]{\setlength{\rightskip}{0pt plus 5cm}bool save\+Image\+As\+Text (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{img, }
+\item[{const char $\ast$}]{text\+File}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_af7a76ee6f10b94407e9558b560b9f7e5}
+将图像保存成文本文件，方便查看 \hypertarget{_image_utils_8h_a676d564f42a6bdda2bdd70a226d75c6c}{\index{Image\+Utils.\+h@{Image\+Utils.\+h}!set\+Pixel@{set\+Pixel}}
+\index{set\+Pixel@{set\+Pixel}!Image\+Utils.\+h@{Image\+Utils.\+h}}
+\subsubsection[{set\+Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Pixel (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{img, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{uchar}]{val}
+\end{DoxyParamCaption}
+)}}\label{_image_utils_8h_a676d564f42a6bdda2bdd70a226d75c6c}
+设置一个单通道图像的像素 w, h Alt\+: 

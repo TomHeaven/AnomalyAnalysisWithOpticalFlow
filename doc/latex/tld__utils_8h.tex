@@ -1,0 +1,64 @@
+\hypertarget{tld__utils_8h}{\section{Anomaly\+Analysis\+With\+Optical\+Flow/tld\+\_\+utils.h File Reference}
+\label{tld__utils_8h}\index{Anomaly\+Analysis\+With\+Optical\+Flow/tld\+\_\+utils.\+h@{Anomaly\+Analysis\+With\+Optical\+Flow/tld\+\_\+utils.\+h}}
+}
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\\*
+{\ttfamily \#include $<$opencv2/core/core.\+hpp$>$}\\*
+{\ttfamily \#include $<$opencv2/imgproc/imgproc.\+hpp$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tld__utils_8h_ac676a5b940593dfe5b394228fcbf77bd}{draw\+Box} (cv\+::\+Mat \&image, Rect box, cv\+::\+Scalar color=cv\+::\+Scalar(255, 255, 255), int thick=1)
+\item 
+void \hyperlink{tld__utils_8h_a9153f32eac65b4a4587e8bae8463e69a}{draw\+Points} (cv\+::\+Mat \&image, std\+::vector$<$ cv\+::\+Point2f $>$ points, cv\+::\+Scalar color=cv\+::\+Scalar\+::all(255))
+\item 
+cv\+::\+Mat \hyperlink{tld__utils_8h_ab94529af4798774472f5d68ddfc4f950}{create\+Mask} (const cv\+::\+Mat \&image, Rect box)
+\item 
+float \hyperlink{tld__utils_8h_ae66f5630c3c396ce063e5aff21863e2e}{median} (std\+::vector$<$ float $>$ v)
+\item 
+std\+::vector$<$ int $>$ \hyperlink{tld__utils_8h_a105a268e26d54e3a3e3e44f8ee97d4b3}{index\+\_\+shuffle} (int begin, int end)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{tld__utils_8h_ab94529af4798774472f5d68ddfc4f950}{\index{tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}!create\+Mask@{create\+Mask}}
+\index{create\+Mask@{create\+Mask}!tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}}
+\subsubsection[{create\+Mask}]{\setlength{\rightskip}{0pt plus 5cm}cv\+::\+Mat create\+Mask (
+\begin{DoxyParamCaption}
+\item[{const cv\+::\+Mat \&}]{image, }
+\item[{Rect}]{box}
+\end{DoxyParamCaption}
+)}}\label{tld__utils_8h_ab94529af4798774472f5d68ddfc4f950}
+\hypertarget{tld__utils_8h_ac676a5b940593dfe5b394228fcbf77bd}{\index{tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}!draw\+Box@{draw\+Box}}
+\index{draw\+Box@{draw\+Box}!tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}}
+\subsubsection[{draw\+Box}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Box (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image, }
+\item[{Rect}]{box, }
+\item[{cv\+::\+Scalar}]{color = {\ttfamily cv\+:\+:Scalar(255,~255,~255)}, }
+\item[{int}]{thick = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{tld__utils_8h_ac676a5b940593dfe5b394228fcbf77bd}
+\hypertarget{tld__utils_8h_a9153f32eac65b4a4587e8bae8463e69a}{\index{tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}!draw\+Points@{draw\+Points}}
+\index{draw\+Points@{draw\+Points}!tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}}
+\subsubsection[{draw\+Points}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Points (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{image, }
+\item[{std\+::vector$<$ cv\+::\+Point2f $>$}]{points, }
+\item[{cv\+::\+Scalar}]{color = {\ttfamily cv\+:\+:Scalar\+:\+:all(255)}}
+\end{DoxyParamCaption}
+)}}\label{tld__utils_8h_a9153f32eac65b4a4587e8bae8463e69a}
+\hypertarget{tld__utils_8h_a105a268e26d54e3a3e3e44f8ee97d4b3}{\index{tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}!index\+\_\+shuffle@{index\+\_\+shuffle}}
+\index{index\+\_\+shuffle@{index\+\_\+shuffle}!tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}}
+\subsubsection[{index\+\_\+shuffle}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ index\+\_\+shuffle (
+\begin{DoxyParamCaption}
+\item[{int}]{begin, }
+\item[{int}]{end}
+\end{DoxyParamCaption}
+)}}\label{tld__utils_8h_a105a268e26d54e3a3e3e44f8ee97d4b3}
+\hypertarget{tld__utils_8h_ae66f5630c3c396ce063e5aff21863e2e}{\index{tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}!median@{median}}
+\index{median@{median}!tld\+\_\+utils.\+h@{tld\+\_\+utils.\+h}}
+\subsubsection[{median}]{\setlength{\rightskip}{0pt plus 5cm}float median (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ float $>$}]{v}
+\end{DoxyParamCaption}
+)}}\label{tld__utils_8h_ae66f5630c3c396ce063e5aff21863e2e}

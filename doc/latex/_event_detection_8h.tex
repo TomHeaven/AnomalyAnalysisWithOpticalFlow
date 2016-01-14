@@ -1,0 +1,225 @@
+\hypertarget{_event_detection_8h}{\section{Anomaly\+Analysis\+With\+Optical\+Flow/\+Event\+Detection.h File Reference}
+\label{_event_detection_8h}\index{Anomaly\+Analysis\+With\+Optical\+Flow/\+Event\+Detection.\+h@{Anomaly\+Analysis\+With\+Optical\+Flow/\+Event\+Detection.\+h}}
+}
+{\ttfamily \#include $<$opencv2/opencv.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}L\+K\+Tracker.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cuda\+\_\+utils.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Type $>$ }\\Type \hyperlink{_event_detection_8h_aa1ac16aed41b5eb1a2b271235d1f67dc}{Find\+Max\+Val} (Type $\ast$arr, int N)
+\item 
+void \hyperlink{_event_detection_8h_a79cd42ebc0a4f27fe0a87b106fda1aa6}{calc\+Bins\+Images} (const Mat \&angle\+Mat, const Mat \&flowmag\+Mat, int n\+Bins, Mat $\ast$bins\+Images, float angle\+Off\+Set=0.\+0f)
+\item 
+void \hyperlink{_event_detection_8h_a1408036807e446908d214351e4c66652}{my\+Integral} (const Mat \&src, Mat \&dst)
+\item 
+void \hyperlink{_event_detection_8h_a0f7a5a1f11510f7597d9c6c0ce211265}{my\+Integral\+Uchar} (const Mat \&src, Mat \&dst)
+\item 
+void \hyperlink{_event_detection_8h_ae2cc958c0f0cfe1ff9e901beebb54a14}{normalize} (Mat \&bin\+Image, int bins)
+\item 
+void \hyperlink{_event_detection_8h_a4a5d747fa32ecfb7dde68dafc47bf099}{calc\+Integral\+Hist} (const Mat \&angle\+Mat, const Mat \&flowmag\+Mat, int n\+Bins, Mat $\ast$bins\+Images, Mat $\ast$integral\+Images)
+\item 
+void \hyperlink{_event_detection_8h_a578e7ac0fd615c7d37bba806c5704f06}{draw\+Arrow} (cv\+::\+Mat \&img, cv\+::\+Point p\+Start, cv\+::\+Point p\+End, int len, int alpha, cv\+::\+Scalar \&color, int thickness, int line\+Type)
+\item 
+void \hyperlink{_event_detection_8h_a1ab2e2fdfbe22fcefff8e5bc71d86595}{Dense\+Sample1} (const Mat \&grey, std\+::vector$<$ Point2f $>$ \&points, const double quality, const int min\+\_\+distance, Mat mask)
+\item 
+bool \hyperlink{_event_detection_8h_abfd5a1fb649989bae3c106f45bfcd4ad}{calc\+Sparse\+Optical\+Flow} (const Mat \&img1, const Mat \&img2, Mat \&xflow, Mat \&yflow, Mat \&angle, Mat \&flowmag, Mat \&sparse\+Mask, Mat \&show\+Mat, const int min\+\_\+distance, const Mat \&mask, const float angle\+Offset=0.\+0f)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const float \hyperlink{_event_detection_8h_a8ba2e476973d74fda57fdbdce1b093fe}{my\+Pi} = 180
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_event_detection_8h_a79cd42ebc0a4f27fe0a87b106fda1aa6}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!calc\+Bins\+Images@{calc\+Bins\+Images}}
+\index{calc\+Bins\+Images@{calc\+Bins\+Images}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{calc\+Bins\+Images}]{\setlength{\rightskip}{0pt plus 5cm}void calc\+Bins\+Images (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{angle\+Mat, }
+\item[{const Mat \&}]{flowmag\+Mat, }
+\item[{int}]{n\+Bins, }
+\item[{Mat $\ast$}]{bins\+Images, }
+\item[{float}]{angle\+Off\+Set = {\ttfamily 0.0f}}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a79cd42ebc0a4f27fe0a87b106fda1aa6}
+\hypertarget{_event_detection_8h_a4a5d747fa32ecfb7dde68dafc47bf099}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!calc\+Integral\+Hist@{calc\+Integral\+Hist}}
+\index{calc\+Integral\+Hist@{calc\+Integral\+Hist}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{calc\+Integral\+Hist}]{\setlength{\rightskip}{0pt plus 5cm}void calc\+Integral\+Hist (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{angle\+Mat, }
+\item[{const Mat \&}]{flowmag\+Mat, }
+\item[{int}]{n\+Bins, }
+\item[{Mat $\ast$}]{bins\+Images, }
+\item[{Mat $\ast$}]{integral\+Images}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a4a5d747fa32ecfb7dde68dafc47bf099}
+计算积分直方图 
+\begin{DoxyParams}{Parameters}
+{\em angle\+Mat} & 光流角度矩阵 \\
+\hline
+{\em flowmag\+Mat} & 光流速度矩阵 \\
+\hline
+{\em n\+Bins} & 方向桶的个数 \\
+\hline
+{\em Bins\+Images} & 输出的各个方向的直方图矩阵 \\
+\hline
+{\em Integral\+Images} & 输出的光流直方图的积分图像 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_event_detection_8h_abfd5a1fb649989bae3c106f45bfcd4ad}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!calc\+Sparse\+Optical\+Flow@{calc\+Sparse\+Optical\+Flow}}
+\index{calc\+Sparse\+Optical\+Flow@{calc\+Sparse\+Optical\+Flow}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{calc\+Sparse\+Optical\+Flow}]{\setlength{\rightskip}{0pt plus 5cm}bool calc\+Sparse\+Optical\+Flow (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{img1, }
+\item[{const Mat \&}]{img2, }
+\item[{Mat \&}]{xflow, }
+\item[{Mat \&}]{yflow, }
+\item[{Mat \&}]{angle, }
+\item[{Mat \&}]{flowmag, }
+\item[{Mat \&}]{sparse\+Mask, }
+\item[{Mat \&}]{show\+Mat, }
+\item[{const int}]{min\+\_\+distance, }
+\item[{const Mat \&}]{mask, }
+\item[{const float}]{angle\+Offset = {\ttfamily 0.0f}}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_abfd5a1fb649989bae3c106f45bfcd4ad}
+计算单密度光流 
+\begin{DoxyParams}{Parameters}
+{\em img1} & 输入的前帧图像 \\
+\hline
+{\em img2} & 输入的后帧图像 \\
+\hline
+{\em xflow} & 输出的x方向位移 \\
+\hline
+{\em yflow} & 输出的y方向位移 \\
+\hline
+{\em angle} & 输出的光流角度 \\
+\hline
+{\em flowmag} & 输出的光流能量 \\
+\hline
+{\em sparse\+Mask} & 输出的计算了光流的区域mask \\
+\hline
+{\em show\+Mat} & 输出的光流显示图像 \\
+\hline
+{\em min\+\_\+distance} & 输入的计算光流时空间采样间隔 \\
+\hline
+{\em mask} & 输入的计算光流的mask \\
+\hline
+{\em angle\+Offset} & 计算角度时采用的零点 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+一个bool值，表示计算是否成功 
+\end{DoxyReturn}
+\hypertarget{_event_detection_8h_a1ab2e2fdfbe22fcefff8e5bc71d86595}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!Dense\+Sample1@{Dense\+Sample1}}
+\index{Dense\+Sample1@{Dense\+Sample1}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{Dense\+Sample1}]{\setlength{\rightskip}{0pt plus 5cm}void Dense\+Sample1 (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{grey, }
+\item[{std\+::vector$<$ Point2f $>$ \&}]{points, }
+\item[{const double}]{quality, }
+\item[{const int}]{min\+\_\+distance, }
+\item[{Mat}]{mask}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a1ab2e2fdfbe22fcefff8e5bc71d86595}
+单密度采样：对当前图像，每间隔一定的间隔（比如5个像素）获取一个采样点，为了剔除一些无关紧要的点，对这些点进行判决，如果特征值过小，则将该点剔除。 另外，通过引入mask，仅仅对mask覆盖的区域进行计算 
+\begin{DoxyParams}{Parameters}
+{\em grey} & 输入的灰度图像 \\
+\hline
+{\em points} & 输出的光流点对 \\
+\hline
+{\em quality} & 过滤掉的向量特征值占最大特征值的比率 \\
+\hline
+{\em min\+\_\+distance} & 输入的空间采样距离 \\
+\hline
+{\em mask} & 输入的计算时的mask \\
+\hline
+\end{DoxyParams}
+\hypertarget{_event_detection_8h_a578e7ac0fd615c7d37bba806c5704f06}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!draw\+Arrow@{draw\+Arrow}}
+\index{draw\+Arrow@{draw\+Arrow}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{draw\+Arrow}]{\setlength{\rightskip}{0pt plus 5cm}void draw\+Arrow (
+\begin{DoxyParamCaption}
+\item[{cv\+::\+Mat \&}]{img, }
+\item[{cv\+::\+Point}]{p\+Start, }
+\item[{cv\+::\+Point}]{p\+End, }
+\item[{int}]{len, }
+\item[{int}]{alpha, }
+\item[{cv\+::\+Scalar \&}]{color, }
+\item[{int}]{thickness, }
+\item[{int}]{line\+Type}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a578e7ac0fd615c7d37bba806c5704f06}
+\hypertarget{_event_detection_8h_aa1ac16aed41b5eb1a2b271235d1f67dc}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!Find\+Max\+Val@{Find\+Max\+Val}}
+\index{Find\+Max\+Val@{Find\+Max\+Val}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{Find\+Max\+Val}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Type $>$ Type Find\+Max\+Val (
+\begin{DoxyParamCaption}
+\item[{Type $\ast$}]{arr, }
+\item[{int}]{N}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_aa1ac16aed41b5eb1a2b271235d1f67dc}
+\hypertarget{_event_detection_8h_a1408036807e446908d214351e4c66652}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!my\+Integral@{my\+Integral}}
+\index{my\+Integral@{my\+Integral}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{my\+Integral}]{\setlength{\rightskip}{0pt plus 5cm}void my\+Integral (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a1408036807e446908d214351e4c66652}
+计算积分图像 （因\+Open\+C\+V函数 integral 存在64位浮点数溢出的问题而编写） 
+\begin{DoxyParams}{Parameters}
+{\em src} & 输入矩阵 \\
+\hline
+{\em dst} & 积分图像 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_event_detection_8h_a0f7a5a1f11510f7597d9c6c0ce211265}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!my\+Integral\+Uchar@{my\+Integral\+Uchar}}
+\index{my\+Integral\+Uchar@{my\+Integral\+Uchar}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{my\+Integral\+Uchar}]{\setlength{\rightskip}{0pt plus 5cm}void my\+Integral\+Uchar (
+\begin{DoxyParamCaption}
+\item[{const Mat \&}]{src, }
+\item[{Mat \&}]{dst}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_a0f7a5a1f11510f7597d9c6c0ce211265}
+计算积分图像 （输入为uchar，输出为float） 
+\begin{DoxyParams}{Parameters}
+{\em src} & 输入矩阵 \\
+\hline
+{\em dst} & 积分图像 \\
+\hline
+\end{DoxyParams}
+\hypertarget{_event_detection_8h_ae2cc958c0f0cfe1ff9e901beebb54a14}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!normalize@{normalize}}
+\index{normalize@{normalize}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}void normalize (
+\begin{DoxyParamCaption}
+\item[{Mat \&}]{bin\+Image, }
+\item[{int}]{bins}
+\end{DoxyParamCaption}
+)}}\label{_event_detection_8h_ae2cc958c0f0cfe1ff9e901beebb54a14}
+对光流直方图作最大值归一化 
+\begin{DoxyParams}{Parameters}
+{\em bin\+Image} & 光流直方图 \\
+\hline
+{\em bins} & 直方图的桶数 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_event_detection_8h_a8ba2e476973d74fda57fdbdce1b093fe}{\index{Event\+Detection.\+h@{Event\+Detection.\+h}!my\+Pi@{my\+Pi}}
+\index{my\+Pi@{my\+Pi}!Event\+Detection.\+h@{Event\+Detection.\+h}}
+\subsubsection[{my\+Pi}]{\setlength{\rightskip}{0pt plus 5cm}const float my\+Pi = 180}}\label{_event_detection_8h_a8ba2e476973d74fda57fdbdce1b093fe}
+计算直方图柱值图像 
+\begin{DoxyParams}{Parameters}
+{\em angle\+Mat} & 光流角度矩阵 \\
+\hline
+{\em flowmag\+Mat} & 光流速度矩阵 \\
+\hline
+{\em n\+Bins} & 方向桶的个数 \\
+\hline
+{\em Bins\+Images} & 各个方向的直方图矩阵 \\
+\hline
+{\em angle\+Offset} & 计算角度时采用的零点 \\
+\hline
+\end{DoxyParams}
