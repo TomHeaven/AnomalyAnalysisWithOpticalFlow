@@ -34,6 +34,7 @@ two datasets and make it easy to be used in video anomaly detection.
 # At Last
 
 If you use our datasets or code in your work, please cite our paper
+
 @inproceedings{tan2016fast,
   title={Fast anomaly detection in traffic surveillance video based on robust sparse optical flow},
   author={Tan, Hanlin and Zhai, Yongping and Liu, Yu and Zhang, Maojun},
