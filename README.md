@@ -110,14 +110,12 @@ AnomalyAnalysisWithOpticalFlow.exe E:\videos train.avi test.avi 4 0.02 24  24
 
 ## Switch between CPU and GPU
 
-Using GPU (Nvidia CUDA) is enabled by default since it speeds up computation. However, the part of code is not fully tested and may contain bugs. If you encounter GPU related error, you can disable this feature by comment out the
+Using GPU (Nvidia CUDA) is enabled by default since it speeds up computation, which requires OpenCV to be compiled with CUDA support. If you do not have an Nvidia GPU or OpenCV with CUDA support, you can disable this feature by comment out the
 
 ```
 #define USE_CUDA
 ```
 in stdafx.h and recompile the project. 
-
-We are planning to test and update GPU related code in a few weeks.
 
 
 
