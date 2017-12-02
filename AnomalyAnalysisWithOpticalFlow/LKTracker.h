@@ -26,8 +26,11 @@ private:
   bool filterPts(std::vector<cv::Point2f>& points1,std::vector<cv::Point2f>& points2);
 
   //Cuda加速版本
+#ifdef USE_CUDA
   GpuMat gImg1, gImg2, gPoints1, gPoints2, gStatus, gPointsFB, gFBStatus;
   PyrLKOpticalFlow* gFlow;
+#endif
+
   void LKTracker::normCrossCorrelation(const GpuMat& img1, const GpuMat& img2, const GpuMat& gPoints1, const GpuMat& gPoints2, const vector<Point2f>& points1, const vector<Point2f> points2);
  // bool filterPts(GpuMat points1, GpuMat points2); // not implemented
 public:
@@ -38,6 +41,8 @@ public:
   float getFB(){return fbmed;}
 
   //Cuda加速版本
+#ifdef USE_CUDA
   bool LKTracker::trackf2f(const GpuMat& img1, const GpuMat& img2, GpuMat &points1, GpuMat &points2);
+#endif
 };
 

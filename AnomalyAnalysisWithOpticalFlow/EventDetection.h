@@ -292,6 +292,7 @@ bool calcSparseOpticalFlow(const Mat & img1, const Mat & img2, Mat & xflow, Mat 
 	clock_t startTime1 = clock();
 #endif
 	gfDetector->operator()(gGray1, gCorners, gMask); //void operator ()(const GpuMat& image, GpuMat& corners, const GpuMat& mask = GpuMat());
+	gfDetector->releaseMemory();
 #ifdef  MEASURE_TIME
 	clock_t endTime1 = clock();
 	printf("goodFeaturesToTrack pure time = %.3f\n", double(endTime1 - startTime1) / CLOCKS_PER_SEC);

@@ -34,32 +34,6 @@ LKTracker::~LKTracker(){
 	}
 }
 
-
-bool LKTracker::trackf2f(const GpuMat& gImg1, const GpuMat& gImg2, GpuMat &gPoints1, GpuMat &gPoints2) {
-	//计算正反光流
-	gFlow->sparse(gImg1, gImg2, gPoints1, gPoints2, gStatus); // compute gPoints2
-	gFlow->sparse(gImg2, gImg1, gPoints2, gPointsFB, gFBStatus); //compute gPointsFB
-
-	vector<Point2f> points1, points2;
-	download(gPoints1, points1);
-	download(gPoints2, points2);
-
-	//Compute the real FB-error
-	FB_error.clear();
-	for (int i = 0; i < points1.size(); ++i)
-	{
-		FB_error.push_back(norm(pointsFB[i] - points1[i]));
-	}
-	//Filter out points with FB_error[i] > mean(FB_error) && points with sim_error[i] > mean(sim_error)
-	normCrossCorrelation(gImg1, gImg2, gPoints1, gPoints2, points1, points2);
-	bool retVal = filterPts(points1, points2);
-	//更新gpu数据
-	upload(points1, gPoints1);
-	upload(points2, gPoints2);
-	return retVal;
-}
-
-
 bool LKTracker::trackf2f(const Mat& img1, const Mat& img2, vector<Point2f> &points1, vector<cv::Point2f> &points2)
 {
 	//TODO!:implement c function cvCalcOpticalFlowPyrLK() or Faster tracking function
@@ -74,21 +48,6 @@ bool LKTracker::trackf2f(const Mat& img1, const Mat& img2, vector<Point2f> &poin
 	calcOpticalFlowPyrLK(img2, img1, points2, pointsFB, FB_status, FB_error, window_size, level, term_criteria, lambda, 0);
 #else
 	/////////// GPU 加速
-	/*Mat p1(1, points1.size(), CV_32FC2), p2(1, points2.size(), CV_32FC2);
-	// copy data
-	for (int i = 0; i < points1.size(); ++i) {
-		Vec2f& t1 = p1.at<Vec2f>(0, i);
-		t1[0] = points1[i].x;
-		t1[1] = points1[i].y;	
-	}
-
-	for (int i = 0; i < points2.size(); ++i) {
-		Vec2f& t2 = p2.at<Vec2f>(0, i);
-		t2[0] = points2[i].x;
-		t2[1] = points2[i].y;
-	}
-	gPoints1.upload(p1);
-	gPoints2.upload(p2);*/
 	// 上传数据
 	gImg1.upload(img1);
 	gImg2.upload(img2);
@@ -123,7 +82,6 @@ bool LKTracker::trackf2f(const Mat& img1, const Mat& img2, vector<Point2f> &poin
 	//Filter out points with FB_error[i] > mean(FB_error) && points with sim_error[i] > mean(sim_error)
 	normCrossCorrelation(img1, img2, points1, points2);
 	return filterPts(points1, points2);
-	//return true;
 }
 
 
